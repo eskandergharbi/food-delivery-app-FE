@@ -31,8 +31,8 @@ tools {
     stage('Docker Build and Push') {
       steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-          sh 'docker build -t codedecode25/food-delivery-app-fe:${VERSION} .'
-          sh 'docker push codedecode25/food-delivery-app-fe:${VERSION}'
+          sh 'docker build -t eskandergharbi/food-delivery-app-fe:${VERSION} .'
+          sh 'docker push eskandergharbi/food-delivery-app-fe:${VERSION}'
       }
     }
 
@@ -49,7 +49,7 @@ tools {
         script {
           // Set the new image tag with the Jenkins build number
        sh '''
-          sed -i "s/image:.*/image: codedecode25\\/food-delivery-app-fe:${VERSION}/" aws/angular-manifest.yml
+          sed -i "s/image:.*/image: eskandergharbi\\/food-delivery-app-fe:${VERSION}/" aws/angular-manifest.yml
         '''
 
           sh 'git checkout master'
